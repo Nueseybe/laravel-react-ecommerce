@@ -14,9 +14,9 @@ enum ProductVariationTypeEnum: string
     public static function labels(): array
     {
         return [
-            self::Select->value => __('Select')
-            self::Radio->value => __('Radio')
-            self::Image->value => __('Image')
-        ]
+            self::Select->value => __('Select'),
+            self::Radio->value => __('Radio'),
+            self::Image->value => __('Image'),
+        ];
     }
 }

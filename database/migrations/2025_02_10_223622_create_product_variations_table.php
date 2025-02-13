@@ -30,7 +30,7 @@ return new class extends Migration
                 ->constrained('variation_types')
                 ->cascadeOnDelete();
             $table->string('name');
-            $table->string('type');
+            $table->string('type')->default('default_type');
         });
 
 
