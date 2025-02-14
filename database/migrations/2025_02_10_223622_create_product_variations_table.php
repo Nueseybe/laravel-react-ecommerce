@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('variation_types');
         Schema::create('variation_types', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-
+        Schema::dropIfExists('variation_type_options');
         Schema::create('variation_type_options', function (Blueprint $table) {
             $table->id();
             $table->foreignId('variation_type_id')
@@ -33,7 +34,7 @@ return new class extends Migration
             $table->string('type')->default('default_type');
         });
 
-
+        Schema::dropIfExists('product_variations');
         Schema::create('product_variations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')
@@ -43,7 +44,7 @@ return new class extends Migration
             $table->json('variation_type_option_ids');
             $table->integer('quantity')->nullable();
             $table->decimal('price' , 20, 4)->nullable();
-            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -53,5 +54,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('product_variations');
+        Schema::dropIfExists('variation_type_options');
+        Schema::dropIfExists('variation_types');
     }
+
 };
