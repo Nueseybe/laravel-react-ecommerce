@@ -12,6 +12,7 @@ use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Filament\Resources\ProductResource\Pages\ProductImages;
 use App\Filament\Resources\ProductResource\Pages\ProductVariationTypes;
+use App\Filament\Resources\ProductResource\Pages\ProductVariations;
 use App\Enums\RolesEnum;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -165,6 +166,7 @@ class ProductResource extends Resource
             'edit' => Pages\EditProduct::route('/{record}/edit'),
             'images'=> Pages\ProductImages::route('{record}/images'),
             'variation-types'=> Pages\ProductVariationTypes::route('{record}/variation-types'),
+            'variations'=> Pages\ProductVariations::route('{record}/variations'),
         ];
     }
 
@@ -174,6 +176,7 @@ class ProductResource extends Resource
                 EditProduct::class,
                 ProductImages::class,
                 ProductVariationTypes::class,
+                ProductVariations::class,
 
             ]);
 
