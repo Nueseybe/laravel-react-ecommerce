@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Database\Eloquent\Builder;
+use App\Enums\ProductStatusEnum;
 
 
 
@@ -39,12 +40,18 @@ class Product extends Model implements HasMedia
         return $query->where('status', ProductStatusEnum::Published);
     }
 
+
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
 
     }
-
 
     public function category(): BelongsTo
     {
